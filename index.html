@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio - Behrouz Rostami</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f5f7fa;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #1f2937;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .container {
+            width: 85%;
+            margin: auto;
+            padding: 20px 0;
+        }
+
+        /* Project list */
+        .project-list {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .project-list a {
+            display: block;
+            padding: 10px;
+            margin: 5px 0;
+            text-decoration: none;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        .project-list a:hover {
+            background: #eef2ff;
+            border-radius: 5px;
+        }
+
+        /* Sections */
+        section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #111827;
+        }
+
+        h3 {
+            margin-top: 20px;
+            color: #374151;
+        }
+
+        .diagram {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .diagram img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Portfolio</h1>
+    <p>Behrouz Rostami – Senior Computer Vision & Machine Learning Engineer / Data Scientist</p>
+    <p>
+        <a href="https://www.linkedin.com/in/behrouz-rostami-046513a1" target="_blank">LinkedIn</a> |
+        <a href="mailto:behrouz.rostami85@gmail.com">Email</a>
+    </p>
+</header>
+
+<div class="container">
+
+    <!-- PROJECT LIST -->
+    <div class="project-list">
+        <h2>Projects</h2>
+        <a href="#segmentation">Wound bed and tissue semantic segmentation using CNNs for an iPhone application</a>
+        <a href="#lvef">Abnormal LVEF detection from coronary angiograms using 3D CNNs and video Transformers</a>
+        <a href="#classification">Multi-class Wound image type classification using an ensemble DCNN-based classifier</a>
+    </div>
+
+    <!-- PROJECT 1 -->
+    <section id="segmentation">
+        <h2>Wound Bed & Tissue Semantic Segmentation</h2>
+
+        <h3>Problem Statement</h3>
+        <p>
+            Traditional wound measurement methods are manual, invasive, and inaccurate.
+            The goal was to design a non-invasive AI-based solution for automatic wound
+            segmentation in an iPhone application. 
+        </p>
+
+        <div class="diagram">
+            <img src="images/segmentation_pipeline.png" 
+                alt="LVEF Model Diagram"
+                style="max-width: 800px; width: 300%; height: auto;">
+        </div>
+
+        <h3>My role</h3>
+        <p>
+            I had the end-to-end ownership of the project from data annotation and processing to model training, evaluation, and 
+            model preparation for deployment. I designed and developed a DCNN-based algorithm for 
+            wound bed and tissue semantic segmentation.
+        </p>
+
+        <h3>Approach</h3>
+        <ul>
+            <li>Model: DeepLabV3</li>
+            <li>Data curation, cleaning, and annotation with clinical supervision</li>
+            <li>Handled imbalanced data situation using weighted loss and synthetic data generation</li>
+            <li>The model and experiments were implemented using Python programming language and PyTorch lightning framework.</li>
+            <li>I trained the model on AWS SageMaker environment and converted it to .onnx version for deployment</li>
+            <li>Metrics: IoU, Dice score, Accuracy</li>
+        </ul>
+
+        <h3>Outcome</h3>
+        <ul>
+            <li>I improved the model performance in terms of Acc. and IoU by >7% (0.88 to 0.95) through data cleaning, correcting mislabeled samples, extensive data augmentation techniques, increasing input image dimensions, optimizing batch size, and correcting normalization approach</li>
+            <li>Successfully deployed in production</li>
+            <li>Bias mitigation using synthetic darker skin samples</li>
+        </ul>
+    </section>
+
+    <!-- PROJECT 2 -->
+    <section id="lvef">
+        <h2>Abnormal LVEF Detection from Coronary Angiograms</h2>
+
+        <h3>Problem Statement</h3>
+        <p>
+            Estimating Left Ventricular Ejection Fraction (LVEF) typically requires
+            invasive procedures like left ventriculography that increases the risk level for the patient. 
+            This project aimed to build a non-invasive AI system
+            using angiogram videos to detect LVEF abnormality. It can be used as a decision support system
+            to help cardiologists during the surgery in Cath Lab.
+        </p>
+
+        <div class="diagram">
+            <img src="images/lvef_model_1.png" 
+                alt="LVEF Model Diagram"
+                style="max-width: 600px; width: 200%; height: auto;">
+        </div>
+
+        <h3>My role</h3>
+        <p>
+            I had the end-to-end ownership of the project from data processing to model selection, training, and evaluation. 
+            I designed and developed an ensemble 3DCNN+Transformer model to detect patients with abnormal 
+            LVEF.   
+        </p>
+
+
+        <div class="diagram">
+            <img src="images/lvef_model_2.png" 
+                alt="LVEF Model Diagram"
+                style="max-width: 600px; width: 200%; height: auto;">
+        </div>
+
+        <h3>Approach</h3>
+        <ul>
+            <li>Dataset: ~19K angiograms from >17K patients</li>
+            <li>Preprocessing: DICOM header info extraction, filtering invalid samples, DICOM → PNG, video selection, frame selection</li>
+            <li>Model: Ensemble of 3D ResNet152 + TimeSFormer</li>
+            <li>Temporal modeling to capture heart motion dynamics</li>
+            <li>I used multiple GPUs for model training</li>
+            <li>The models and experiments were implemented using Python programming language and PyTorch framework.</li>
+        </ul>
+
+        <h3>Outcome</h3>
+        <ul>
+            <li>AUC, sensitivity, specificity: 0.87, 0.77, 0.80</li>
+            <li>Outperformed human baseline</li>
+            <li>Enabled real-time decision support in cath lab</li>
+            <li>The study was the first image-based AI project in whole Mayo Clinic Cath Lab's history</li>
+            <li>This research was published in JACC journal:
+                <a href="https://www.jacc.org/doi/full/10.1016/j.jacadv.2023.100632" target="_blank">
+                    Deep learning to Estimate LVEF from Routine Coronary Angiographic Images
+                </a>
+            </li>
+            <li>This project was the basis for creating a dashboard viewer for Cath lab. I developed a POC version of this app and tested it in a real environment</li>
+        </ul>
+
+        <div class="diagram">
+            <img src="images/lvef_model_3.png" 
+                alt="LVEF Model Diagram"
+                style="max-width: 400px; width: 100%; height: auto;">
+        </div>
+    </section>
+
+    <!-- PROJECT 3 -->
+    <section id="classification">
+        <h2>Multi-class Wound Image Type Classification</h2>
+
+        <h3>Problem Statement</h3>
+        <p>
+            Classify wound types automatically using image data into different 
+            categories (e.g., surgical, diabetic, etc.) to assist clinical workflows.
+        </p>
+
+        <div class="diagram">
+            <img src="images/wound_classification_1.png" 
+                alt="LVEF Model Diagram"
+                style="max-width: 400px; width: 100%; height: auto;">
+        </div>
+
+         <h3>My role</h3>
+        <p>
+            I had the end-to-end ownership of the project from data annotation and processing to model selection, training, and evaluation. 
+            I designed and developed an ensemble DCNN-based model to classify wound images into two or three classes. 
+
+        </p>
+
+        <h3>Approach</h3>
+        <ul>
+            <li>Model: ensemble of two AlexNet architectures (while image classifier + path classifier)</li>
+            <li>Image-wise + patch-wise classification idea solved the wound scaling issue in images (tiny wounds and large wounds)</li>
+            <li>Multi-class classification</li>
+            <li>Optimized training pipeline and augmentation</li>
+            <li>Very simple and fast algorithm for wound image classification</li>
+        </ul>
+
+        <div class="diagram">
+            <img src="images/wound_classification_2.png" 
+                alt="LVEF Model Diagram"
+                style="max-width: 600px; width: 200%; height: auto;">
+        </div>
+
+        <div class="diagram">
+            <img src="images/wound_classification_3.png" 
+                alt="LVEF Model Diagram"
+                style="max-width: 600px; width: 200%; height: auto;">
+        </div>
+
+        <h3>Outcome</h3>
+        <ul>
+            <li>Published in Computers in Biology and Medicine:
+                <a href="https://www.sciencedirect.com/science/article/abs/pii/S0010482521003309" target="_blank">
+                    Multiclass wound image classification using an ensemble deep CNN-based classifier.
+                </a>
+            </li>
+            <li>Improved classification accuracy using ensemble learning</li>
+            <li>First research that proposed a method for multiclass classification of wound images</li>
+        </ul>
+    </section>
+
+</div>
+
+</body>
+</html>
