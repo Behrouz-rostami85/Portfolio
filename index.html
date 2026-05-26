@@ -112,9 +112,10 @@
     <!-- PROJECT LIST -->
     <div class="project-list">
         <h2>Projects</h2>
-        <a href="#segmentation">Wound bed and tissue semantic segmentation using CNNs for an iPhone application</a>
-        <a href="#lvef">Abnormal LVEF detection from coronary angiograms using 3D CNNs and video Transformers</a>
-        <a href="#classification">Multi-class Wound image type classification using an ensemble DCNN-based classifier</a>
+        <a href="#segmentation">1) Wound bed and tissue semantic segmentation using CNNs for an iPhone application</a>
+        <a href="#lvef">2) Abnormal LVEF detection from coronary angiograms using 3D CNNs and video Transformers</a>
+        <a href="#lvdd">3) Automated Assessment of Left Ventricular Filling Pressures From Coronary Angiograms With Video-Based Deep Learning Algorithms</a>
+        <a href="#classification">4) Multi-class Wound image type classification using an ensemble DCNN-based classifier</a>
     </div>
 
     <!-- PROJECT 1 -->
@@ -223,7 +224,75 @@
         </div>
     </section>
 
+
     <!-- PROJECT 3 -->
+    <section id="lvdd">
+        <h2>Automated Assessment of Left Ventricular Filling Pressures From Coronary Angiograms With Video-Based Deep Learning Algorithms</h2>
+
+        <h3>Problem Statement</h3>
+        <p>
+            Estimating Conventional coronary angiography focuses on anatomy (blockages) but misses 
+            crucial functional data like left ventricular filling pressures. The Core Problem is that 
+            assessing diastolic function typically requires a separate echocardiogram, delaying real-time 
+            clinical decisions in the cath lab. Human operators cannot detect the subtle, dynamic motion 
+            of the arteries and myocardium that indicates elevated filling pressures, necessitating an 
+            automated, video-based deep learning solution.
+        </p>
+
+        <div class="diagram">
+            <img src="images/lvdd_1.png" 
+                alt="LVDD Model Diagram"
+                style="max-width: 600px; width: 200%; height: auto;">
+        </div>
+
+        <h3>My role</h3>
+        <p>
+            I had the end-to-end ownership of the project from data processing to model selection, training, and evaluation. 
+            I designed and developed a 3DCNN-based classifier to detect patients with abnormal 
+            Left Ventricular Diastolic Disfunction (LVDD) from angiogram videos.   
+        </p>
+
+
+        <h3>Approach</h3>
+        <ul>
+            <li>Dataset: 6,114 angiogram studies from 6,093 patients</li>
+            <li>Preprocessing: DICOM header info extraction, filtering invalid samples, DICOM → PNG, video selection, frame selection</li>
+            <li>Model: X3D </li>
+            <li>Conducted experiments with different number of frames (videos with 16, 32, 48 frames) </li>
+            <li>Temporal modeling to capture dynamic motion of coronary arteries and adjacent myocardium</li>
+            <li>I used multiple GPUs for model training</li>
+            <li>The models and experiments were implemented using Python programming language and PyTorch framework.</li>
+        </ul>
+
+        <h3>Outcome</h3>
+        <ul>
+            <li>AUC, sensitivity, specificity: 0.872, 0.797, 0.785</li>
+            <li>In a sensitivityanalysis restricting the study cohort to patients with Coronary Angiography and 
+                echocardiography within 30 days, the model maintained excellent performance 
+                with an AUC of 0.867, sensitivity of 0.781, and speciﬁcity of 0.772</li>
+            <li>Subgroup analyses showed stability of the excellent model’s performance across 
+                subgroups stratiﬁed by age, in male patients vs female patients, 
+                in patients without aorticstenosis vs patients with aortic 
+                stenosis, and in patients with left ventricular hypertrophy vs patients with no 
+                left ventricular hy-pertrophy.</li>
+            <li>This is the ﬁrst documentation of AI-based estimation of LVDF from Coronary Angiography</li>
+            <li>This research was published in the journal of JACC: Cardiovascular Interventions:
+                <a href="https://www.jacc.org/doi/epdf/10.1016/j.jcin.2024.07.047" target="_blank">
+                    Automated Assessment of Left Ventricular Filling Pressures From Coronary Angiograms
+                </a>
+            </li>
+        </ul>
+
+        <div class="diagram">
+            <img src="images/lvdd_2.png" 
+                alt="LVDD outcoms"
+                style="max-width: 600px; width: 150%; height: auto;">
+        </div>
+    </section>
+
+
+
+    <!-- PROJECT 4 -->
     <section id="classification">
         <h2>Multi-class Wound Image Type Classification</h2>
 
