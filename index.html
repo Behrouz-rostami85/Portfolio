@@ -115,7 +115,8 @@
         <a href="#segmentation">1) Wound bed and tissue semantic segmentation using CNNs for an iPhone application</a>
         <a href="#lvef">2) Abnormal LVEF detection from coronary angiograms using 3D CNNs and video Transformers</a>
         <a href="#lvdd">3) Automated Assessment of Left Ventricular Filling Pressures From Coronary Angiograms With Video-Based Deep Learning Algorithms</a>
-        <a href="#classification">4) Multi-class Wound image type classification using an ensemble DCNN-based classifier</a>
+        <a href="#rvf">4) Estimating right ventricular function from routine coronary angiography using 3D CNNs and multimodal models</a>
+        <a href="#classification">5) Multi-class Wound image type classification using an ensemble DCNN-based classifier</a>
     </div>
 
     <!-- PROJECT 1 -->
@@ -281,6 +282,8 @@
                     Automated Assessment of Left Ventricular Filling Pressures From Coronary Angiograms
                 </a>
             </li>
+            <li>This project was part of the dashboard viewer application built for Cath lab. I developed a POC version of this app and tested it in a real environment</li>
+
         </ul>
 
         <div class="diagram">
@@ -291,8 +294,82 @@
     </section>
 
 
-
+    
     <!-- PROJECT 4 -->
+    <section id="rvf">
+        <h2>Right ventricular function estimation from routine coronary angiography using 3D CNNs and multimodal models</h2>
+
+        <h3>Problem Statement</h3>
+        <p>
+            Assessing right ventricular function currently requires separate, 
+            time-consuming imaging modalities, leaving a wealth of functional 
+            data undetected during routine diagnostic coronary angiography. A 3D CNN-based 
+            approach and a multimodal model (video + signal) were developed that 
+            automatically screen for right ventricular dysfunction in real time using routine 
+            angiograms videos and continuous ECG data.
+        </p>
+
+        <div class="diagram">
+            <img src="images/rvf_1.png" 
+                alt="LVEF Model Diagram"
+                style="max-width: 600px; width: 200%; height: auto;">
+        </div>
+
+        <h3>My role</h3>
+        <p>
+            I had the end-to-end ownership of the 3D CNN-based approach from data processing to model selection, training, and evaluation. 
+            I also designed and developed an ensemble model using both angiogram videos and ECG signals for each patient, 
+            to detect patients with abnormal RV function.   
+        </p>
+
+
+        <div class="diagram">
+            <img src="images/rvf_2.png" 
+                alt="RVF Model Diagram"
+                style="max-width: 600px; width: 200%; height: auto;">
+        </div>
+
+        <h3>Approach</h3>
+        <ul>
+            <li>Dataset: 10,336 coronary angiograms from 9,849 patients</li>
+            <li>Preprocessing: DICOM header info extraction, filtering invalid samples, DICOM → PNG, video selection, frame selection</li>
+            <li>Spatiotemporal Modeling: Utilized an X3D (3D-CNN) architecture to extract dynamic geometric and functional features from raw right coronary artery (RCA) angiogram videos</li>
+            <li>Multimodal Data Fusion: Developed an ensemble pipeline that integrates video embeddings with synced ECG data and clinical variables, boosting overall classification robustness</li>
+            <li>Clinical Deployment: Designed and implemented a lightweight Flask dashboard to translate complex model outputs into interpretable, point-of-care screening metrics for clinicians</li>
+            <li>I used multiple GPUs for model training</li>
+            <li>The models and experiments were implemented using Python programming language and PyTorch framework</li>
+        </ul>
+
+        <div class="diagram">
+            <img src="images/rvf_4.png" 
+                alt="RVF Model Diagram"
+                style="max-width: 600px; width: 200%; height: auto;">
+        </div>
+
+        <h3>Outcome</h3>
+        <ul>
+            <li>Achieved an AUC of 0.87 in identifying advanced right ventricular (RV) systolic dysfunction by seamlessly combining dynamic cineangiography embeddings with ECG signal</li>
+            <li>Proven capable of opportunistically screening for right ventricular strain directly from routine right coronary artery (RCA) views, removing the immediate necessity for separate, resource-intensive imaging like echocardiography or cardiac MRI</li>
+            <li>This model integrates seamlessly into Cath lab workflows, offering real-time RV function insights</li>
+            <li>This research was published in the European Heart Journal - Digital Health:
+                <a href="https://pubmed.ncbi.nlm.nih.gov/41684375/" target="_blank">
+                    Deep learning for estimating right ventricular function from routine coronary angiography
+                </a>
+            </li>
+            <li>This project was part of the dashboard viewer application built for Cath lab. I developed a POC version of this app and tested it in a real environment</li>
+        </ul>
+
+        <div class="diagram">
+            <img src="images/rvf_3.png" 
+                alt="RVF Model Diagram"
+                style="max-width: 600px; width: 150%; height: auto;">
+        </div>
+    </section>
+
+
+
+
+    <!-- PROJECT 5 -->
     <section id="classification">
         <h2>Multi-class Wound Image Type Classification</h2>
 
